@@ -12,12 +12,12 @@ import scala.scalajs.js.annotation.JSExport
 /**
  * @author 杨博 (Yang Bo) &lt;pop.atry@gmail.com&gt;
  */
-class Page(stargazerCounter: js.Dynamic) {
+class Page(stargazerCounterService: js.Dynamic) {
 
   @dom
   def render = {
     val userNameInput = UserNameInput()
-    val userStargzerData = new JsPromiseBinding(stargazerCounter.getStargazer(userNameInput.userName.each).asInstanceOf[Promise[js.Dynamic]])
+    val userStargzerData = new JsPromiseBinding(stargazerCounterService.getStargazer(userNameInput.userName.each).asInstanceOf[Promise[js.Dynamic]])
     val stargazerStatus = new StargazerStatus(userStargzerData)
     <section>
       { userNameInput.render.each }{ stargazerStatus.render.each }
@@ -30,8 +30,8 @@ class Page(stargazerCounter: js.Dynamic) {
 object Page {
 
   @JSExport
-  def main(stargazerCounter: js.Dynamic): Unit = {
-    val page = new Page(stargazerCounter)
+  def main(stargazerCounterService: js.Dynamic): Unit = {
+    val page = new Page(stargazerCounterService)
     dom.render(org.scalajs.dom.document.body, page.render)
   }
 
