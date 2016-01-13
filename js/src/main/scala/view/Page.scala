@@ -17,8 +17,7 @@ class Page(stargazerCounter: js.Dynamic) {
   @dom
   def render = {
     val userNameInput = UserNameInput()
-    val promise = stargazerCounter.getStargazer(userNameInput.userName.each).asInstanceOf[Promise[js.Dynamic]]
-    val userStargzerData = new JsPromiseBinding(promise)
+    val userStargzerData = new JsPromiseBinding(stargazerCounter.getStargazer(userNameInput.userName.each).asInstanceOf[Promise[js.Dynamic]])
     val stargazerStatus = new StargazerStatus(userStargzerData)
     <section>
       { userNameInput.render.each }{ stargazerStatus.render.each }
