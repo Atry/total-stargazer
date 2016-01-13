@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script src="lib/browser-request/dist/browser/request-min.js"></script>
+<script type="text/javascript" src="total-stargazer-sdk.js"></script>
+<script type="text/javascript" src="js-fastopt.js"></script>
+<script type="text/javascript">
+    (function () {
+        var routeConfiguration = sdk.proxy.MicrobuilderRouteConfigurationFactory.routeConfiguration_sdk_rpc_IBffStargazerCounter();
+        var urlPrifix = "/api/";
+        var outgoingJsonService = new com.thoughtworks.microbuilder.js.JsOutgoingJsonService(urlPrifix, routeConfiguration, window.request);
+        var stargazerCounter = sdk.proxy.MicrobuilderOutgoingProxyFactory.outgoingProxy_sdk_rpc_IBffStargazerCounter(outgoingJsonService);
+        view.Page().main(stargazerCounter);
+    })();
+</script>
+</body>
+</html>

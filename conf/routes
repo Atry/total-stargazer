@@ -1,0 +1,2 @@
+GET   /api/*relatedUrl   com.thoughtworks.microbuilder.play.RpcController.rpc(relatedUrl:String)
+GET   /assets/*file      controllers.Assets.versioned(path="/public", file: Asset)
